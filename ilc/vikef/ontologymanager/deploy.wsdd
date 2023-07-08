@@ -1,0 +1,412 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OntologyManagerSoapServiceProviderService WSDL service -->
+
+  <service name="OntologyManagerSoapServiceProvider" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:OntologyManager.IPSI.vikef"/>
+      <parameter name="wsdlServiceElement" value="OntologyManagerSoapServiceProviderService"/>
+      <parameter name="schemaUnqualified" value="urn:OntologyManager.IPSI.vikef,OntologyManagerSoapServiceProvider"/>
+      <parameter name="wsdlServicePort" value="OntologyManagerSoapServiceProvider"/>
+      <parameter name="className" value="ilc.vikef.ontologymanager.OntologyManagerSoapServiceProviderSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="OntologyManagerSoapServiceProvider"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getProperties" qname="operNS:getProperties" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getPropertiesReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="domainConcept" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="rangeConcept" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="domainDirectProperties" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="querySrnVersion" qname="operNS:querySrnVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="querySrnVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="rdqlQueryString" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="serializationLang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOntology" qname="operNS:getOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getOntologyReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="lang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listOntologyVersions" qname="operNS:listOntologyVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listOntologyVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOntologyVersion" qname="operNS:getOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getOntologyVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="VersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="lang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isReadableOntology" qname="operNS:isReadableOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isReadableOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="groupIdOrNull" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listOntologies" qname="operNS:listOntologies" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listOntologiesReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listAllPublishedOntologyVersions" qname="operNS:listAllPublishedOntologyVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listAllPublishedOntologyVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isPublishedOntologyVersion" qname="operNS:isPublishedOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isPublishedOntologyVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Version" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listPublishedOntologyVersions" qname="operNS:listPublishedOntologyVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listPublishedOntologyVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addOntology" qname="operNS:addOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="addOntologyReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="Ontology" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateOntologyVersion" qname="operNS:updateOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="updateOntologyVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="VersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="SerializedOntology" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isWritableOntology" qname="operNS:isWritableOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isWritableOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="groupIdOrNull" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteOntology" qname="operNS:deleteOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteOntologyVersion" qname="operNS:deleteOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteOntologyVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="VersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="lockOntology" qname="operNS:lockOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="lockOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unlockOntology" qname="operNS:unlockOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="unlockOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isLockedOntology" qname="operNS:isLockedOntology" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isLockedOntologyReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOntologyLock" qname="operNS:getOntologyLock" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getOntologyLockReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="publishOntologyVersion" qname="operNS:publishOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="publishOntologyVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="VersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unpublishOntologyVersion" qname="operNS:unpublishOntologyVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="unpublishOntologyVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="VersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOntologyHistory" qname="operNS:getOntologyHistory" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getOntologyHistoryReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listAllUnpublishedOntologyVersions" qname="operNS:listAllUnpublishedOntologyVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listAllUnpublishedOntologyVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listUnpublishedOntologyVersions" qname="operNS:listUnpublishedOntologyVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listUnpublishedOntologyVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="OntologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="manageOntologyAccessRights" qname="operNS:manageOntologyAccessRights" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="manageOntologyAccessRightsReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="userGroupID" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="readEnabled" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="writeEnabled" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="queryOntologyVersionSPARQL" qname="operNS:queryOntologyVersionSPARQL" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="queryOntologyVersionSPARQLReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontoVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sparqlQueryString" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="serializationLang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addSRN" qname="operNS:addSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="addSRNReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnSerialization" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listSRNs" qname="operNS:listSRNs" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listSRNsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listSRNVersions" qname="operNS:listSRNVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listSRNVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSRN" qname="operNS:getSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getSRNReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="lang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteSRN" qname="operNS:deleteSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteSRNReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteSRNVersion" qname="operNS:deleteSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSRNHistory" qname="operNS:getSRNHistory" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getSRNHistoryReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSRNLock" qname="operNS:getSRNLock" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getSRNLockReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getSRNVersion" qname="operNS:getSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getSRNVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="lang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isLockedSRN" qname="operNS:isLockedSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isLockedSRNReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isPublishedSRNVersion" qname="operNS:isPublishedSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isPublishedSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listAllPublishedSRNVersions" qname="operNS:listAllPublishedSRNVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listAllPublishedSRNVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listPublishedSRNVersions" qname="operNS:listPublishedSRNVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listPublishedSRNVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listAllUnpublishedSRNVersions" qname="operNS:listAllUnpublishedSRNVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listAllUnpublishedSRNVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listUnpublishedSRNVersions" qname="operNS:listUnpublishedSRNVersions" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listUnpublishedSRNVersionsReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="lockSRN" qname="operNS:lockSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="lockSRNReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="publishSRNVersion" qname="operNS:publishSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="publishSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unlockSRN" qname="operNS:unlockSRN" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="unlockSRNReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="unpublishSRNVersion" qname="operNS:unpublishSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="unpublishSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateSRNVersion" qname="operNS:updateSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="updateSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srn" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listSRNIDsHavingOntologyVersionID" qname="operNS:listSRNIDsHavingOntologyVersionID" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listSRNIDsHavingOntologyVersionIDReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="listSRNVersionIDsHavingOntologyVersionID" qname="operNS:listSRNVersionIDsHavingOntologyVersionID" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="listSRNVersionIDsHavingOntologyVersionIDReturn" returnType="rtns:ArrayOf_xsd_string" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:string" xmlns:tns2="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="ontologyVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addTripleToSRNVersion" qname="operNS:addTripleToSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="addTripleToSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="subject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="predicate" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="object" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="isObjectLiteral" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="addTriplesToSRNVersion" qname="operNS:addTriplesToSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="addTriplesToSRNVersionReturn" returnType="rtns:ArrayOf_tns1_Triple" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:Triple" xmlns:tns2="OntologyManagerSoapServiceProvider" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="triplearr" type="tns:ArrayOf_tns1_Triple" xmlns:tns="urn:OntologyManager.IPSI.vikef"/>
+      </operation>
+      <operation name="deleteTripleFromSRNVersion" qname="operNS:deleteTripleFromSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteTripleFromSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="subject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="predicate" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="object" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="isObjectLiteral" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteTriplesFromSRNVersion" qname="operNS:deleteTriplesFromSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="deleteTriplesFromSRNVersionReturn" returnType="rtns:ArrayOf_tns1_Triple" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:Triple" xmlns:tns2="OntologyManagerSoapServiceProvider" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="versionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="triplearr" type="tns:ArrayOf_tns1_Triple" xmlns:tns="urn:OntologyManager.IPSI.vikef"/>
+      </operation>
+      <operation name="updateTripleInSRNVersion" qname="operNS:updateTripleInSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="updateTripleInSRNVersionReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sourceSubject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sourcePredicate" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sourceObject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sourceIsObjectLiteral" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="destSubject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="destPredicate" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="destObject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="destIsObjectLiteral" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateTriplesInSRNVersion" qname="operNS:updateTriplesInSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="updateTriplesInSRNVersionReturn" returnType="rtns:ArrayOf_tns1_Triple" xmlns:rtns="urn:OntologyManager.IPSI.vikef" returnItemType="tns2:Triple" xmlns:tns2="OntologyManagerSoapServiceProvider" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="triplearr" type="tns:ArrayOf_tns1_Triple" xmlns:tns="urn:OntologyManager.IPSI.vikef"/>
+      </operation>
+      <operation name="getTripleFromSRNVersion" qname="operNS:getTripleFromSRNVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getTripleFromSRNVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="subject" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="predicate" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="object" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="isObjectLiteral" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="lang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isReadableSrn" qname="operNS:isReadableSrn" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isReadableSrnReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="groupIdOrNull" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="isWritableSrn" qname="operNS:isWritableSrn" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="isWritableSrnReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="user" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="groupIdOrNull" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="querySrnVersionSPARQL" qname="operNS:querySrnVersionSPARQL" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="querySrnVersionSPARQLReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="sparqlQueryString" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="serializationLang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="queryResultsSrnVersion" qname="operNS:queryResultsSrnVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="queryResultsSrnVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="rdqlQueryString" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="serializationLang" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="manageSRNAccessRights" qname="operNS:manageSRNAccessRights" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="manageSRNAccessRightsReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="groupId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="readEnabled" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="writeEnabled" type="tns:boolean" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getOntologyVersionIdOfSrnVersion" qname="operNS:getOntologyVersionIdOfSrnVersion" xmlns:operNS="urn:OntologyManager.IPSI.vikef" returnQName="getOntologyVersionIdOfSrnVersionReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="userId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="password" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="srnVersionId" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="deleteTripleFromSRNVersion publishSRNVersion getOntologyLock addTripleToSRNVersion querySrnVersion listUnpublishedOntologyVersions listOntologies listSRNVersionIDsHavingOntologyVersionID querySrnVersionSPARQL addSRN getSRNHistory listAllUnpublishedOntologyVersions getSRN listAllUnpublishedSRNVersions lockOntology publishOntologyVersion queryOntologyVersionSPARQL getProperties addOntology listSRNVersions unlockOntology queryResultsSrnVersion getSRNVersion getOntologyHistory isLockedSRN listAllPublishedSRNVersions isLockedOntology listPublishedOntologyVersions manageSRNAccessRights deleteSRN isReadableOntology getOntologyVersion updateTripleInSRNVersion listSRNIDsHavingOntologyVersionID getOntologyVersionIdOfSrnVersion updateTriplesInSRNVersion deleteOntology listSRNs isWritableSrn unlockSRN unpublishOntologyVersion isPublishedOntologyVersion deleteTriplesFromSRNVersion addTriplesToSRNVersion getSRNLock listAllPublishedOntologyVersions deleteSRNVersion listUnpublishedSRNVersions lockSRN getTripleFromSRNVersion updateSRNVersion manageOntologyAccessRights isReadableSrn listOntologyVersions updateOntologyVersion isPublishedSRNVersion listPublishedSRNVersions deleteOntologyVersion getOntology isWritableOntology unpublishSRNVersion"/>
+      <parameter name="scope" value="Session"/>
+
+      <typeMapping
+        xmlns:ns="OntologyManagerSoapServiceProvider"
+        qname="ns:Triple"
+        type="java:ilc.vikef.ontologymanager.Triple"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="urn:OntologyManager.IPSI.vikef"
+        qname="ns:ArrayOf_xsd_string"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+      <arrayMapping
+        xmlns:ns="urn:OntologyManager.IPSI.vikef"
+        qname="ns:ArrayOf_tns1_Triple"
+        type="java:ilc.vikef.ontologymanager.Triple[]"
+        innerType="cmp-ns:Triple" xmlns:cmp-ns="OntologyManagerSoapServiceProvider"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+      />
+  </service>
+</deployment>

@@ -1,0 +1,43 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ITradeFairVikefAnnotatorService WSDL service -->
+
+  <service name="ItalianTradeFair" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:ITradeFairVikefAnnotator"/>
+      <parameter name="wsdlServiceElement" value="ITradeFairVikefAnnotatorService"/>
+      <parameter name="wsdlServicePort" value="ItalianTradeFair"/>
+      <parameter name="className" value="ilc.vikef.ws.ItalianTradeFairSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ITradeFairVikefAnnotator"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="runByURL" qname="operNS:runByURL" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runByURLReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="runZ" qname="operNS:runZ" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runZReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="runByURLZ" qname="operNS:runByURLZ" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runByURLZReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="runSM" qname="operNS:runSM" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runSMReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="runByURLSM" qname="operNS:runByURLSM" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runByURLSMReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="run" qname="operNS:run" xmlns:operNS="urn:ITradeFairVikefAnnotator" returnQName="runReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <parameter name="allowedMethods" value="runByURL runByURLZ runByURLSM runSM run runZ"/>
+
+  </service>
+</deployment>

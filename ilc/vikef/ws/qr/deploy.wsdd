@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from IXqueryResultService WSDL service -->
+
+  <service name="XqueryResult" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="urn:IXqueryResult"/>
+      <parameter name="wsdlServiceElement" value="IXqueryResultService"/>
+      <parameter name="wsdlServicePort" value="XqueryResult"/>
+      <parameter name="className" value="ilc.vikef.ws.qr.XqueryResultSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="IXqueryResult"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="evaluateXQuery" qname="operNS:evaluateXQuery" xmlns:operNS="urn:IXqueryResult" returnQName="evaluateXQueryReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="evaluateXQuerySM" qname="operNS:evaluateXQuerySM" xmlns:operNS="urn:IXqueryResult" returnQName="evaluateXQuerySMReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <operation name="evaluateXQueryZ" qname="operNS:evaluateXQueryZ" xmlns:operNS="urn:IXqueryResult" returnQName="evaluateXQueryZReturn" returnType="rtns:string" xmlns:rtns="http://schemas.xmlsoap.org/soap/encoding/" soapAction="" >
+        <parameter qname="in0" type="tns:string" xmlns:tns="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </operation>
+      <parameter name="allowedMethods" value="evaluateXQuery evaluateXQueryZ evaluateXQuerySM"/>
+
+  </service>
+</deployment>
