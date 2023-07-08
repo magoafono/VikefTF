@@ -4,5 +4,4 @@ Codice Java sviluppato in seno al progetto europeo VIKEF Project (IST-2002-50717
 * Scheda CNR-ILC: https://www.ilc.cnr.it/en/progetti/vikef/
 
 ## autore
-Simone Marchi (simone.marchi[at]ilc.cnr.it) tecnologo@CNR-ILC: https://www.ilc.cnr.it/en/people/simone-marchi/
-
+[Simone Marchi](https://www.ilc.cnr.it/en/people/simone-marchi/) -- simone.marchi[at]ilc.cnr.it -- *tecnologo@CNR-ILC* 
